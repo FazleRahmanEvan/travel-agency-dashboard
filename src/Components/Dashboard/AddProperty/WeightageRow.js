@@ -1,13 +1,13 @@
 import React from 'react';
 
-const CourseLevelRow = ({index,course}) => {
+const WeightageRow = ({index,weightage}) => {
     return (
         <tr>
         <th>{index + 1}</th>
-          <td>{course.courseName}</td>
+          <td>{weightage.weightageName}</td>
           <td>Delete</td>
   </tr>
     );
 };
 
-export default CourseLevelRow;
+export default WeightageRow;

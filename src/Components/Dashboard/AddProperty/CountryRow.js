@@ -1,11 +1,11 @@
 import React from 'react';
 
-const CountryRow = ({index,c}) => {
+const CountryRow = ({index, country}) => {
    
     return (
         <tr>
               <th>{index + 1}</th>
-                <td>{c.countryName}</td>
+                <td>{country.countryName}</td>
                 <td>Edit</td>
                 <td>Delete</td>
         </tr>

@@ -2,49 +2,40 @@ import React, { useEffect, useState } from 'react';
 import CourseLevelRow from './CourseLevelRow';
 
 const AddCourseLevel = () => {
+  
   const [courseTable,setCourseTable]= useState([]);
 
-  const[addFormData, setAddFormData]= useState({
+  const[courseName, setCourseName]= useState('');
 
-   courseName:''
-  })
-  useEffect(()=>{
-     fetch('')
-     .then(res => res.json())
-     .then(data => setCourseTable)
-   
-}, [courseTable])
+  useEffect(()=> {
+    fetch('http://localhost:5000/course')
+    .then(res=>res.json())
+    .then(data=> setCourseTable(data))
+    .catch(err=>console.log(err))
+  },[])
 
-  const handleAddFormChange =(event)=>{
-      event.preventDefault();
-
-      const fieldName = event.target.name;
-      const fieldValue = event.target.value;
-      
-      const newFormData= {...addFormData};
-      newFormData[fieldName]= fieldValue
-      
-      setAddFormData(newFormData);
-  };
-
+  console.log(courseTable)
   const handleSubmit = (event) => {
       event.preventDefault();
-        
-      const newCourse ={
-        
-          courseName:addFormData.courseName
+      console.log(courseName);
       
-      };
+      
+      fetch('http://localhost:5000/course', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({courseName: courseName}),
+        
+      }).then(res=>res.json())
+      .then(data=> setCourseTable([...courseTable, {_id: data.insertedId, courseName: courseName}]))
+      .catch(err=>console.log(err));
+    }
 
-      const newCourses =[...courseTable,newCourse];
-      console.log(newCourses)
-      setCourseTable(newCourses)
-  };
-  
     return (
-      <div>
+       <div>
          <div className='text-2xl text-center mb-8'>
-            <h1>Create Country</h1>
+            <h1>Create Course</h1>
          
 
     <form onSubmit={handleSubmit} className='mt-6 '>
@@ -52,7 +43,8 @@ const AddCourseLevel = () => {
       <input  type="text"  
           name="courseName"
           required="course required"
-          onChange={handleAddFormChange}
+          value={courseName}
+          onChange={(e) => setCourseName(e.target.value)} 
           placeholder="Course" className="input w-full max-w-xs" />
       
         <div>
@@ -71,16 +63,16 @@ const AddCourseLevel = () => {
       <tr>
         <th>SL NO.</th>
         <th>Course</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th>Action</th>
+      
       </tr>
     </thead>
     <tbody>
      {
-         courseTable.map((course, index) => 
+         courseTable?.map((course, index) => 
   
-               <CourseLevelRow
-               key={course._id}
+               <CourseLevelRow 
+               key={index}
                course={course}
                index={index}
                />

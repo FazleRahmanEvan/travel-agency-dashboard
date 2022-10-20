@@ -67,7 +67,7 @@ const AddUniversity = () => {
  </thead>
  <tbody>
   {
-      universityTable.map((versity, index) => 
+      universityTable?.map((versity, index) => 
 
             <UniversityRow
             key={index}

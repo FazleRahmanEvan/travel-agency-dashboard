@@ -18,8 +18,10 @@ import AddUniversity from './Components/Dashboard/AddProperty/AddUniversity';
 import AddWeightage from './Components/Dashboard/AddProperty/AddWeightage';
 import TodaysTask from './Components/Dashboard/TodaysTask/TodaysTask';
 import EmployeeDetails from './Components/Dashboard/EmployeeDetails/EmployeeDetails';
+import { useState } from 'react';
 
 function App() {
+  const [countryTable,setCountryTable]= useState([]);
   return (
     <div className='bg-slate-200'>
 
@@ -30,11 +32,11 @@ function App() {
        <Route path="/dashboard" element={<RequireAuth><Dashboard/>
        </RequireAuth>}> 
        <Route path='leeds' index element={<Leeds></Leeds>}></Route>
-        <Route path="createleeds" element={<CreateLeed></CreateLeed>}></Route>
+        <Route path="createleeds" element={<CreateLeed countryTable={countryTable} setCountryTable={setCountryTable}></CreateLeed>}></Route>
         <Route path="todaysTask" element={<TodaysTask></TodaysTask>}></Route>
         <Route path="employeeDetails" element={<EmployeeDetails></EmployeeDetails>}></Route>
        
-        <Route path="addCountry" element={<AddCountry></AddCountry>}></Route>
+        <Route path="addCountry" element={<AddCountry countryTable={countryTable} setCountryTable={setCountryTable}></AddCountry>}></Route>
         <Route path="addCourselevel" element={<AddCourseLevel></AddCourseLevel>}></Route>
         <Route path="addLeadSource" element={<AddLeadSource></AddLeadSource>}></Route>
         <Route path="addStatus" element={<AddStatus></AddStatus>}></Route>

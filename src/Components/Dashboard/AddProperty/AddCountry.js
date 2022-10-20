@@ -4,9 +4,9 @@ import Loading from '../../Shared/Loading';
 import CountryRow from './CountryRow';
 
 
-const AddCountry = () => {
+const AddCountry = ({countryTable,setCountryTable}) => {
 
-  const [countryTable,setCountryTable]= useState([]);
+  // const [countryTable,setCountryTable]= useState([]);
 
   const[countryName, setCountryName]= useState('');
 
@@ -72,11 +72,11 @@ const AddCountry = () => {
     </thead>
     <tbody>
      {
-         countryTable.map((c, index) => 
+         countryTable?.map((country, index) => 
   
                <CountryRow 
                key={index}
-               c={c}
+               country={country}
                index={index}
                />
          

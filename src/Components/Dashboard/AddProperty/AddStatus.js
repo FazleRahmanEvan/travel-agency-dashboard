@@ -4,46 +4,35 @@ import StatusRow from './StatusRow';
 const AddStatus = () => {
   const [statusTable,setStatusTable]= useState([]);
 
-    const[addFormData, setAddFormData]= useState({
+  const[statusName, setStatusName]= useState('');
 
-     statusname:''
-    })
-    useEffect(()=>{
-   
-       
-     
-  }, [statusTable])
+  useEffect(()=> {
+    fetch('http://localhost:5000/status')
+    .then(res=>res.json())
+    .then(data=> setStatusTable(data))
+    .catch(err=>console.log(err))
+  },[])
 
-    const handleAddFormChange =(event)=>{
-        event.preventDefault();
-
-        const fieldName = event.target.name;
-        const fieldValue = event.target.value;
+  console.log(statusTable)
+  const handleSubmit = (event) => {
+      event.preventDefault();
+      console.log(statusName);
+      
+      
+      fetch('http://localhost:5000/status', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({statusName: statusName}),
         
-        const newFormData= {...addFormData};
-        newFormData[fieldName]= fieldValue
-        
-        setAddFormData(newFormData);
-    };
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const newStatus ={
-         
-            statusName:addFormData.statusName
-          
-        };
-        
-        console.log(newStatus)
-
-        const newStatuses =[...statusTable,newStatus];
-        console.log(newStatuses)
-        setStatusTable(newStatuses)
-    };
-    
+      }).then(res=>res.json())
+      .then(data=> setStatusTable([...statusTable, {_id: data.insertedId, statusName: statusName}]))
+      .catch(err=>console.log(err));
+    }
 
     return (
-      <div>
+       <div>
          <div className='text-2xl text-center mb-8'>
             <h1>Create Status</h1>
          
@@ -52,8 +41,9 @@ const AddStatus = () => {
       
       <input  type="text"  
           name="statusName"
-          required="status name required"
-          onChange={handleAddFormChange}
+          required="status required"
+          value={statusName}
+          onChange={(e) => setStatusName(e.target.value)} 
           placeholder="Status" className="input w-full max-w-xs" />
       
         <div>
@@ -72,16 +62,16 @@ const AddStatus = () => {
       <tr>
         <th>SL NO.</th>
         <th>Status</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th>Action</th>
+      
       </tr>
     </thead>
     <tbody>
      {
-         statusTable.map((status, index) => 
+         statusTable?.map((status, index) => 
   
-               <StatusRow
-               key={status._id}
+               <StatusRow 
+               key={index}
                status={status}
                index={index}
                />

@@ -1,13 +1,13 @@
 import React from 'react';
 
-const CourseLevelRow = ({index,course}) => {
+const StudentTypeRow= ({index,student}) => {
     return (
         <tr>
         <th>{index + 1}</th>
-          <td>{course.courseName}</td>
+          <td>{student.studentName}</td>
           <td>Delete</td>
   </tr>
     );
 };
 
-export default CourseLevelRow;
+export default StudentTypeRow;

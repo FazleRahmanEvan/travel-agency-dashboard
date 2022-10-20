@@ -4,8 +4,7 @@ const LeadSourceRow = ({index,source}) => {
     return (
         <tr>
         <th>{index + 1}</th>
-          <td>{source.leadSourceName}</td>
-          <td>Edit</td>
+          <td>{source.sourceName}</td>
           <td>Delete</td>
   </tr>
     );

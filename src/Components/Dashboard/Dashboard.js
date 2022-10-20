@@ -5,6 +5,8 @@ import { Link, Outlet } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const Dashboard = () => {
+
+  
     const [user,loading,error] = useAuthState(auth);
 
     const logout = () => {

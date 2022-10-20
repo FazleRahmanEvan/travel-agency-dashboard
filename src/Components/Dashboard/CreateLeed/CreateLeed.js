@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Application from './Application';
 
@@ -11,7 +11,10 @@ import PreviousEducationExperience from './PreviousEducationExperience';
 import RmUseOnly from './RmUseOnly';
 import UploadDocuments from './UploadDocuments';
 
-const CreateLeed = () => {
+const CreateLeed = ({countryTable}) => {
+    const{countrys}=countryTable;
+
+
     const { register, formState: { errors }, handleSubmit } = useForm();
  
     const onSubmit = data => {
@@ -74,22 +77,21 @@ const CreateLeed = () => {
                     <div className="form-control w-full max-w-xs">
                     <select className="select w-full max-w-xs">
                      <option disabled selected>Select Student Type</option>
-                     <option>Bsc</option>
-                     <option>Msc</option>
-                     <option>MBA</option>
-                     <option>Phd</option>
+                     <option>{}</option>
+                    
                    
                      </select>
               
                     </div>
                     <div className="form-control w-full max-w-xs">
-                    <select className="select w-full max-w-xs">
-                     <option disabled selected>Apply Country</option>
-                     <option>Canada</option>
-                     <option>Usa</option>
-                     <option>UK</option>
-                     <option>Australia</option>
-                     <option>China</option>
+                    <select name='countryName' className="select w-full max-w-xs">
+                    {
+                               countrys.map((country, index) =><option 
+                                key={index}
+                                value={country}
+                               >{country}</option>)
+                           }
+                     
                      </select>
               
                     </div>

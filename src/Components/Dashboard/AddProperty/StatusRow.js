@@ -4,8 +4,7 @@ const StatusRow = ({index,status}) => {
     return (
         <tr>
         <th>{index + 1}</th>
-          <td>{status.countryName}</td>
-          <td>Edit</td>
+          <td>{status.statusName}</td>
           <td>Delete</td>
   </tr>
     );
