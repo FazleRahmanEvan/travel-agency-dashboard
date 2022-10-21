@@ -4,11 +4,12 @@ import LeadSourceRow from './LeadSourceRow';
 
 const AddLeadSource = () => {
   const [sourceTable,setSourceTable]= useState([]);
-
+  const [refetch, setFetch] = useState(false);
   const[sourceName, setSourceName]= useState('');
 
-//   const [deleteItem, setDeleteItem] = useState(null);
-// const [refetch]= useQuery()
+  const handleFetch = () => {
+    setFetch((prev)=>!prev)
+  }
 
 
   useEffect(()=> {
@@ -16,7 +17,7 @@ const AddLeadSource = () => {
     .then(res=>res.json())
     .then(data=> setSourceTable(data))
     .catch(err=>console.log(err))
-  },[])
+  },[refetch])
 
   console.log(sourceTable)
   const handleSubmit = (event) => {
@@ -77,6 +78,7 @@ const AddLeadSource = () => {
             key={index}
             source={source}
             index={index}
+            refetch={handleFetch}
             />
       )
   }

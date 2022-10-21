@@ -3,15 +3,20 @@ import StatusRow from './StatusRow';
 
 const AddStatus = () => {
   const [statusTable,setStatusTable]= useState([]);
-
+  const [refetch, setFetch] = useState(false);
   const[statusName, setStatusName]= useState('');
+
+  const handleFetch = () => {
+    setFetch((prev)=>!prev)
+  }
+
 
   useEffect(()=> {
     fetch('http://localhost:5000/status')
     .then(res=>res.json())
     .then(data=> setStatusTable(data))
     .catch(err=>console.log(err))
-  },[])
+  },[refetch])
 
   console.log(statusTable)
   const handleSubmit = (event) => {
@@ -74,6 +79,7 @@ const AddStatus = () => {
                key={index}
                status={status}
                index={index}
+               refetch={handleFetch}
                />
          
           

@@ -3,15 +3,19 @@ import UniversityRow from './UniversityRow';
 
 const AddUniversity = () => {
   const [universityTable,setUniversityTable]= useState([]);
-
+  const [refetch, setFetch] = useState(false);
   const[universityName, setUniversityName]= useState('');
+  const handleFetch = () => {
+    setFetch((prev)=>!prev)
+  }
+
 
   useEffect(()=> {
     fetch('http://localhost:5000/university')
     .then(res=>res.json())
     .then(data=> setUniversityTable(data))
     .catch(err=>console.log(err))
-  },[])
+  },[refetch])
 
   console.log(universityTable)
   const handleSubmit = (event) => {
@@ -73,6 +77,7 @@ const AddUniversity = () => {
             key={index}
             versity={versity}
             index={index}
+            refetch={handleFetch}
             />
       
        

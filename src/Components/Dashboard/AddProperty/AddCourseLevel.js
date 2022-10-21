@@ -4,7 +4,7 @@ import CourseLevelRow from './CourseLevelRow';
 const AddCourseLevel = () => {
   
   const [courseTable,setCourseTable]= useState([]);
-
+  const [refetch, setFetch] = useState(false);
   const[courseName, setCourseName]= useState('');
 
   useEffect(()=> {
@@ -12,7 +12,11 @@ const AddCourseLevel = () => {
     .then(res=>res.json())
     .then(data=> setCourseTable(data))
     .catch(err=>console.log(err))
-  },[])
+  },[refetch])
+
+  const handleFetch = () => {
+    setFetch((prev)=>!prev)
+  }
 
   console.log(courseTable)
   const handleSubmit = (event) => {
@@ -75,6 +79,7 @@ const AddCourseLevel = () => {
                key={index}
                course={course}
                index={index}
+               refetch={handleFetch}
                />
          
           

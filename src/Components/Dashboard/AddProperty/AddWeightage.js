@@ -4,14 +4,21 @@ import WeightageRow from './WeightageRow';
 const AddWeightage = () => {
   const [weightageTable,setWeightageTable]= useState([]);
 
+  const [refetch, setFetch] = useState(false);
   const[weightageName, setWeightageName]= useState('');
+
+
+  const handleFetch = () => {
+    setFetch((prev)=>!prev)
+  }
+
 
   useEffect(()=> {
     fetch('http://localhost:5000/weightage')
     .then(res=>res.json())
     .then(data=> setWeightageTable(data))
     .catch(err=>console.log(err))
-  },[])
+  },[refetch])
 
   console.log(weightageTable)
   const handleSubmit = (event) => {
@@ -74,6 +81,7 @@ const AddWeightage = () => {
                key={index}
                weightage={weightage}
                index={index}
+               refetch={handleFetch}
                />
          
           

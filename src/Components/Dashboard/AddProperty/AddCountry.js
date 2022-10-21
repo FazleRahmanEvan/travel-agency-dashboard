@@ -2,22 +2,27 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Loading from '../../Shared/Loading';
 import CountryRow from './CountryRow';
+import DeleteConfirm from './DeleteConfirm';
 
 
-const AddCountry = ({countryTable,setCountryTable}) => {
+const AddCountry = () => {
+  const [countryTable,setCountryTable]= useState([]);
 
-  // const [countryTable,setCountryTable]= useState([]);
-
+  const [refetch, setFetch] = useState(false);
   const[countryName, setCountryName]= useState('');
+
+  const handleFetch = () => {
+    setFetch((prev)=>!prev)
+  }
 
   useEffect(()=> {
     fetch('http://localhost:5000/country')
     .then(res=>res.json())
     .then(data=> setCountryTable(data))
     .catch(err=>console.log(err))
-  },[])
+  },[refetch])
 
-  console.log(countryTable)
+  
   const handleSubmit = (event) => {
       event.preventDefault();
       console.log(countryName);
@@ -66,8 +71,8 @@ const AddCountry = ({countryTable,setCountryTable}) => {
       <tr>
         <th>SL NO.</th>
         <th>Country</th>
-        <th>Edit</th>
-        <th>Delete</th>
+     
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
@@ -78,14 +83,18 @@ const AddCountry = ({countryTable,setCountryTable}) => {
                key={index}
                country={country}
                index={index}
+               refetch={handleFetch}
                />
          
           
          )
      }
+
+
       
     </tbody>
   </table>
+
 </div>
        </div>
     );

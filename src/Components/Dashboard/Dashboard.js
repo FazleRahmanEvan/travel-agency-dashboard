@@ -25,12 +25,20 @@ const Dashboard = () => {
         <div className="drawer-side">
           <label for="dashboard-sidebar" className="drawer-overlay"></label> 
        
-          <ul className="menu p-4 overflow-y-auto w-80  bg-gradient-to-r from-slate-500 to-gray-700 text-base-content">
+          <ul className="menu pl-8 p-4 overflow-y-auto w-80  bg-gradient-to-r from-slate-500 to-gray-700 text-base-content">
             {/* <!-- Sidebar content here --> */}
-            <li className='mb-5 mt-6 text-3xl text-white'><Link to="/">MeetTech Lab</Link></li>
-            <li className='text-white'><Link to="/dashboard/leeds">Leeds</Link></li>
-            <li className='text-white'><Link to="/dashboard/createleeds">Create Leed</Link></li>
-            <li className='text-white'><Link to="/dashboard/todaysTask">Todays Task</Link></li>
+            
+            <div class="avatar pl-14 mt-6 ">
+                 <div class="w-28 rounded-full">
+                  <img src="https://i.ibb.co/NCpj4V7/Dream-Solution.jpg" />
+                    </div>
+              </div>
+          
+            <li className='text-3xl text-white'><Link to ="/dashboard">Dream Solution</Link></li>
+            
+            <li className='text-white text-center'><Link to="/dashboard/leeds">Leeds</Link></li>
+            <li className='text-white  text-center'><Link to="/dashboard/createleeds">Create Leed</Link></li>
+            {/* <li className='text-white'><Link to="/dashboard/todaysTask">Todays Task</Link></li> */}
           
             <li className='text-white'><Link to="/dashboard/employeeDetails">Employee Details</Link></li>
             
