@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import { useForm } from 'react-hook-form';
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
 
@@ -16,7 +17,7 @@ const Login = () => {
         error,
         ] = useSignInWithEmailAndPassword(auth);
 
-        // const [token]= useToken(user || gUser)
+        const [token]= useToken(user || gUser)
          
         let signInError;
 
@@ -24,10 +25,13 @@ const Login = () => {
         const location = useLocation();
         let from = location.state?.from?.pathname || "/dashboard";
 
-       
-            if (user || gUser) {
-                navigate(from, { replace: true });
-            }
+        useEffect( () =>{
+
+    
+       if (token) {
+        navigate(from, { replace: true });
+      }
+      },[token, from, navigate])
        
 
       if(loading || gLoading){

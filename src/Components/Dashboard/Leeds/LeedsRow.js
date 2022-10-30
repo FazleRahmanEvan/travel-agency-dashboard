@@ -1,4 +1,5 @@
 import React from 'react';
+import useAdmin from '../../../hooks/useAdmin';
 
 const leedsRow = ({index, item, refetch}) => {
     const{ _id}= item;
@@ -28,7 +29,7 @@ const leedsRow = ({index, item, refetch}) => {
         <td>{item.countryname}</td>
         <td>{item.phone}</td>
         
-        <td><button onClick={() => handleDelete(_id)} class="btn btn-xs btn-error">Delete</button></td>
+      <td> <button onClick={() => handleDelete(_id)} class="btn btn-xs btn-error">Delete</button></td>
     </tr>
     );
 };

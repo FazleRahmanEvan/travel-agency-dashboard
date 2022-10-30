@@ -18,8 +18,11 @@ import AddUniversity from './Components/Dashboard/AddProperty/AddUniversity';
 import AddWeightage from './Components/Dashboard/AddProperty/AddWeightage';
 import TodaysTask from './Components/Dashboard/TodaysTask/TodaysTask';
 import EmployeeDetails from './Components/Dashboard/EmployeeDetails/EmployeeDetails';
-import { useState } from 'react';
-import PersonalDetails from './Components/Dashboard/CreateLeed/PersonalDetails';
+import Attendence from './Components/Dashboard/Attendence';
+
+
+
+
 
 function App() {
  
@@ -35,10 +38,9 @@ function App() {
        </RequireAuth>}> 
        <Route path='leeds' index element={<Leeds></Leeds>}></Route>
         <Route path="createleeds" element={<CreateLeed ></CreateLeed>}></Route>
-
-        {/* <Route path="personal" element={<PersonalDetails></PersonalDetails>}></Route> */}
-        <Route path="todaysTask" element={<TodaysTask></TodaysTask>}></Route>
-        <Route path="employeeDetails" element={<EmployeeDetails></EmployeeDetails>}></Route>
+        <Route path="attendence" element={<Attendence></Attendence>}></Route>
+        {/* <Route path="todaysTask" element={<TodaysTask></TodaysTask>}></Route> */}
+        <Route path="employeeList" element={<EmployeeDetails></EmployeeDetails>}></Route>
        
         <Route path="addCountry" element={<AddCountry ></AddCountry>}></Route>
         <Route path="addCourselevel" element={<AddCourseLevel></AddCourseLevel>}></Route>

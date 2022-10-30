@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Loading from '../../Shared/Loading';
 import CountryRow from './CountryRow';
-import DeleteConfirm from './DeleteConfirm';
+
 
 
 const AddCountry = () => {

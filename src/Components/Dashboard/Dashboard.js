@@ -3,12 +3,14 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, Outlet } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useAdmin from '../../hooks/useAdmin';
 
 const Dashboard = () => {
 
   
+  
     const [user,loading,error] = useAuthState(auth);
-
+    const [admin] = useAdmin(user);
     const logout = () => {
         signOut(auth)
         localStorage.removeItem('accessToken');
@@ -40,11 +42,11 @@ const Dashboard = () => {
             <li className='text-white  text-center'><Link to="/dashboard/createleeds">Create Leed</Link></li>
             {/* <li className='text-white'><Link to="/dashboard/todaysTask">Todays Task</Link></li> */}
           
-            <li className='text-white'><Link to="/dashboard/employeeDetails">Employee Details</Link></li>
-            
+          { admin &&  <li className='text-white'><Link to="/dashboard/employeeList">Employee List</Link></li>}
+          <li className='text-white'><Link to="/dashboard/attendence">Attendence</Link></li>
             <div 
             className="dropdown relative">
-        <label tabindex="0" className="pl-4 text-white w-4">Add Property</label>
+      { admin && <label tabindex="0" className="pl-4 text-white w-4">Add Property</label>}
         <ul tabindex="0" className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
         <li><Link to="/dashboard/addCountry">Add Country</Link></li>
         <li><Link to="/dashboard/addUniversity">Add University</Link></li>

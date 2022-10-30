@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
-import DatePicker from "react-datepicker";
-import useFetch from '../../../hooks/useFetch';
+
 import useCountry from '../../../hooks/useCountry';
 import useCourse from '../../../hooks/useCourse';
 import useStatus from '../../../hooks/useStatus';
@@ -9,16 +8,10 @@ import useSource from '../../../hooks/useSource';
 import useWeightage from '../../../hooks/useWeightage';
 import useUniversity from '../../../hooks/useUniversity';
 import useStudentType from '../../../hooks/useStudentType';
-import Application from './Application';
+
 import axios from 'axios'
-import CreateTask from './CreateTask';
-import EnglishTest from './EnglishTest';
-import InstitutionChoice from './InstitutionChoice';
-import InterestedCourse from './InterestedCourse';
-import PersonalDetails from './PersonalDetails';
-import PreviousEducationExperience from './PreviousEducationExperience';
-import RmUseOnly from './RmUseOnly';
-import UploadDocuments from './UploadDocuments';
+import Loading from '../../Shared/Loading';
+
 
 
 
@@ -37,16 +30,19 @@ const CreateLeed = () => {
 
     const {
         register,
-        formState: { errors },
+    
         handleSubmit,
       } = useForm();
  
     const onSubmit = data => {
-        axios.post('http://localhost:5000/leeds', data).then(res=> console.log(res)).catch(err=> console.log(err))
+        axios.post('http://localhost:5000/leeds', data)
+        .then(res=> console.log(res))
+        .catch(err=> console.log(err))
+
     }
 
     if(loading){
-        return <p>Loading...</p>
+        return <Loading/>
     }
 
     return (
@@ -55,7 +51,6 @@ const CreateLeed = () => {
             <h1 className='text-3xl font-bold '>Create Leed</h1>
             <form onSubmit={handleSubmit(onSubmit)} className=' mb-8  '>
           
-
           
 
             <section className='mb-6 '>
@@ -200,22 +195,64 @@ const CreateLeed = () => {
                      </select>
               
                     </div>
-
-
                     <div className="form-control w-full max-w-xs">
-                      
-                    <input type="text"
-                          placeholder="Intake Year"
-                          className="input input-bordered w-full max-w-xs"
-                          {...register("courseIntakeYear", {
-                              required:{
-                                  
-                                  message:'Required'
-                              }
-                          })}
-                      />
-                     
-                  </div>
+                    <select {...register("courseIntakeYear")}  className="select w-full max-w-xs">
+                     <option disabled selected>Intake Year</option>
+                     <option>2000</option>
+                     <option>2001</option>
+                     <option>2002</option>
+                     <option>2003</option>
+                     <option>2004</option>
+                     <option>2005</option>
+                     <option>2006</option>
+                     <option>2007</option>
+                     <option>2008</option>
+                     <option>2009</option>
+                     <option>2010</option>
+                     <option>2011</option>
+                     <option>2012</option>
+                     <option>2013</option>
+                     <option>2014</option>
+                     <option>2015</option>
+                     <option>2016</option>
+                     <option>2017</option>
+                     <option>2018</option>
+                     <option>2019</option>
+                     <option>2020</option>
+                     <option>2021</option>
+                     <option>2022</option>
+                     <option>2023</option>
+                     <option>2024</option>
+                     <option>2025</option>
+                     <option>2026</option>
+                     <option>2027</option>
+                     <option>2028</option>
+                     <option>2029</option>
+                     <option>2030</option>
+                     <option>2031</option>
+                     <option>2032</option>
+                     <option>2033</option>
+                     <option>2034</option>
+                     <option>2035</option>
+                     <option>2036</option>
+                     <option>2037</option>
+                     <option>2038</option>
+                     <option>2039</option>
+                     <option>2040</option>
+                     <option>2041</option>
+                     <option>2042</option>
+                     <option>2043</option>
+                     <option>2044</option>
+                     <option>2045</option>
+                     <option>2046</option>
+                     <option>2047</option>
+                     <option>2048</option>
+                     <option>2049</option>
+                     <option>2050</option>
+                
+                     </select>
+              
+                    </div>
 
 
 
@@ -267,11 +304,20 @@ const CreateLeed = () => {
             <div className="form-control w-full max-w-xs">
                     <select className="select w-full max-w-xs">
                      <option disabled selected>Previous Qualification Level</option>
-                     <option></option>
-                     <option></option>
-                     <option></option>
-                     <option></option>
-                     <option></option>
+                     <option>HSC</option>
+                     <option> BA (Bachelor of Arts)</option>
+                     <option>BSS (Bachelor of Social Science)</option>
+                     <option>BSc (Bachelor of Science)</option>
+                     <option>BBA (Bachelor of Business Administration )</option>
+                     <option>BArch(Bachelor of Architecture )</option>
+                     <option>BComm (Bachelor of Commerce)</option>
+                     <option>BPharm (Bachelor of Pharmacy )</option>
+                     <option>BTech (Bachelor of Technology)</option>
+                     <option>BCL (Bachelor of Civil Law)</option>
+                     <option>Dakhil</option>
+                     <option>Alim </option>
+                     <option>Fazil</option>
+
                      </select>
               
                     </div>
@@ -279,11 +325,19 @@ const CreateLeed = () => {
                     <div className="form-control w-full max-w-xs">
                     <select className="select w-full max-w-xs">
                      <option disabled selected>Recent Qualification Level</option>
-                     <option></option>
-                     <option></option>
-                     <option></option>
-                     <option></option>
-                     <option></option>
+                     <option>HSC</option>
+                     <option> BA (Bachelor of Arts)</option>
+                     <option>BSS (Bachelor of Social Science)</option>
+                     <option>BSc (Bachelor of Science)</option>
+                     <option>BBA (Bachelor of Business Administration )</option>
+                     <option>BArch(Bachelor of Architecture )</option>
+                     <option>BComm (Bachelor of Commerce)</option>
+                     <option>BPharm (Bachelor of Pharmacy )</option>
+                     <option>BTech (Bachelor of Technology)</option>
+                     <option>BCL (Bachelor of Civil Law)</option>
+                     <option>Dakhil</option>
+                     <option>Alim </option>
+                     <option>Fazil</option>
                      </select>
               
                     </div>
@@ -360,14 +414,10 @@ const CreateLeed = () => {
             <div className="form-control w-full max-w-xs">
                     <select {...register("ieltsPoint")}  className="select w-full max-w-xs">
                      <option disabled selected>IELTS</option>
-                     <option>5.5</option>
-                     <option>6</option>
-                     <option>6.5</option>
-                     <option>7</option>
-                     <option>7.5</option>
-                     <option>8</option>
-                     <option>8.5</option>
-                     <option>9</option>
+                     <option>Yes</option>
+                     <option>No</option>
+                     <option>Will Give</option>
+                    
                      </select>
               
                     </div>
@@ -388,6 +438,7 @@ const CreateLeed = () => {
                       />
                     
                   </div>
+                  
 
                  
 
@@ -402,58 +453,61 @@ const CreateLeed = () => {
             </div>
             <div  className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4  '>
             <div className="form-control w-full max-w-xs">
-                    <select {...register("courseFirstChoice")}  className="select w-full max-w-xs">
-                     <option disabled selected>First Choice</option>
-                     {
-                               courses?.map((course,index) =><option 
-                                key={index}
-                                value={course.courseName}
-                               >{course.courseName}</option>)
-                           }
+                      
+                      <input type="text"
+                          placeholder="First Choice"
+                          className="input input-bordered w-full max-w-xs"
+                          {...register("courseFirstChoice", {
+                              required:{
+                                  
+                                  message:'Required'
+                              }
+                          })}
+                      />
                     
-                     </select>
-              
-                    </div>
-
-                    <div className="form-control w-full max-w-xs">
-                    <select {...register("courseSecondChoice")} className="select w-full max-w-xs">
-                     <option disabled selected>Second Choice</option>
-                     {
-                               courses?.map((course,index) =><option 
-                                key={index}
-                                value={course.courseName}
-                               >{course.courseName}</option>)
-                           }
-                     </select>
-              
-                    </div>
-
-                    <div className="form-control w-full max-w-xs">
-                    <select {...register("courseThirdChoice")} className="select w-full max-w-xs">
-                     <option disabled selected>Third Choice</option>
-                     {
-                               courses?.map((course,index) =><option 
-                                key={index}
-                                value={course.courseName}
-                               >{course.courseName}</option>)
-                           }
-                     </select>
-              
-                    </div>
-
-                  <div className="form-control w-full max-w-xs">
-                    <select {...register("courseFourthChoice")} className="select w-full max-w-xs">
-                     <option disabled selected>Fourth Choice</option>
-                     {
-                               courses?.map((course,index) =><option 
-                                key={index}
-                                value={course.courseName}
-                               >{course.courseName}</option>)
-                           }
-                     </select>
-              
-                    </div>
-
+                  </div>
+            <div className="form-control w-full max-w-xs">
+                      
+                      <input type="text"
+                          placeholder="Second Choice"
+                          className="input input-bordered w-full max-w-xs"
+                          {...register("courseSecondChoice", {
+                              required:{
+                                  
+                                  message:'Required'
+                              }
+                          })}
+                      />
+                    
+                  </div>
+            <div className="form-control w-full max-w-xs">
+                      
+                      <input type="text"
+                          placeholder="Third Choice"
+                          className="input input-bordered w-full max-w-xs"
+                          {...register("courseThirdChoice", {
+                              required:{
+                                  
+                                  message:'Required'
+                              }
+                          })}
+                      />
+                    
+                  </div>
+            <div className="form-control w-full max-w-xs">
+                      
+                      <input type="text"
+                          placeholder="Fourth Choice"
+                          className="input input-bordered w-full max-w-xs"
+                          {...register("courseFourthChoice", {
+                              required:{
+                                  
+                                  message:'Required'
+                              }
+                          })}
+                      />
+                    
+                  </div>
 
             </div>
         </section>
@@ -461,7 +515,7 @@ const CreateLeed = () => {
 
         <section className='mb-6 '>
         <div className='justify-start'>
-          <h1  className='text-xl text-slate-700 mb-4 mt-5'>RM Use Only</h1>
+          <h1  className='text-xl text-slate-700 mb-4 mt-5'>DS Use Only</h1>
       </div>
       <div  className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 '>
       <div className="form-control w-full max-w-xs">
@@ -635,7 +689,7 @@ const CreateLeed = () => {
         </svg>
         <span className="mt-2 text-white leading-normal">Select a file</span>
         <input type='file' className="hidden" 
-           {...register("workExperience", {
+           {...register("workExperienceLetter", {
             required: {
               
                 message: 'Image is Required'
@@ -889,22 +943,64 @@ const CreateLeed = () => {
               
                     </div>
 
-                  
-                    <div className="form-control w-full max-w-xs">
-                    <input type="text"
-                          placeholder="Intake Year"
-                          className="input input-bordered w-full max-w-xs"
-                          {...register("applicationIntakeYear", {
-                              required:{
-                                
-                                  message:'Required'
-                              }
-                          })}
-                      />
-                      
-                  </div>
-
-
+                  <div className="form-control w-full max-w-xs">
+                    <select {...register("applicationIntakeYear")}  className="select w-full max-w-xs">
+                     <option disabled selected>Intake Year</option>
+                     <option>2000</option>
+                     <option>2001</option>
+                     <option>2002</option>
+                     <option>2003</option>
+                     <option>2004</option>
+                     <option>2005</option>
+                     <option>2006</option>
+                     <option>2007</option>
+                     <option>2008</option>
+                     <option>2009</option>
+                     <option>2010</option>
+                     <option>2011</option>
+                     <option>2012</option>
+                     <option>2013</option>
+                     <option>2014</option>
+                     <option>2015</option>
+                     <option>2016</option>
+                     <option>2017</option>
+                     <option>2018</option>
+                     <option>2019</option>
+                     <option>2020</option>
+                     <option>2021</option>
+                     <option>2022</option>
+                     <option>2023</option>
+                     <option>2024</option>
+                     <option>2025</option>
+                     <option>2026</option>
+                     <option>2027</option>
+                     <option>2028</option>
+                     <option>2029</option>
+                     <option>2030</option>
+                     <option>2031</option>
+                     <option>2032</option>
+                     <option>2033</option>
+                     <option>2034</option>
+                     <option>2035</option>
+                     <option>2036</option>
+                     <option>2037</option>
+                     <option>2038</option>
+                     <option>2039</option>
+                     <option>2040</option>
+                     <option>2041</option>
+                     <option>2042</option>
+                     <option>2043</option>
+                     <option>2044</option>
+                     <option>2045</option>
+                     <option>2046</option>
+                     <option>2047</option>
+                     <option>2048</option>
+                     <option>2049</option>
+                     <option>2050</option>
+                
+                     </select>
+              
+                    </div>
 
             </div>
         </section>
@@ -915,6 +1011,8 @@ const CreateLeed = () => {
         <div className='mt-10 mb-16 text-center pr-24'>
         <button className="btn btn-wide ">Create</button>
         </div>
+
+
             </form>
         </div>
     );
@@ -924,12 +1022,3 @@ export default CreateLeed;
 
 
 
-{/* <PersonalDetails></PersonalDetails>
-<InterestedCourse></InterestedCourse>
-<PreviousEducationExperience></PreviousEducationExperience>
-<EnglishTest></EnglishTest>
-<InstitutionChoice></InstitutionChoice>
-<RmUseOnly></RmUseOnly>
-<UploadDocuments></UploadDocuments>
-<CreateTask></CreateTask>
-<Application></Application> */}
