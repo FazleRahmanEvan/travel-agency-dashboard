@@ -8,9 +8,12 @@ import useSource from '../../../hooks/useSource';
 import useWeightage from '../../../hooks/useWeightage';
 import useUniversity from '../../../hooks/useUniversity';
 import useStudentType from '../../../hooks/useStudentType';
+import useEmployee from '../../../hooks/useEmployee';
 
 import axios from 'axios'
 import Loading from '../../Shared/Loading';
+import { useState } from 'react';
+
 
 
 
@@ -24,9 +27,10 @@ const CreateLeed = () => {
     const { sources} = useSource('source');
     const { weightages} = useWeightage('weightage');
     const { universitys} = useUniversity('university');
+    const {employees} = useEmployee('user');
     
     // const [startDate, setStartDate] = useState(new Date());
-
+  
 
     const {
         register,
@@ -36,8 +40,10 @@ const CreateLeed = () => {
  
     const onSubmit = data => {
         axios.post('http://localhost:5000/leeds', data)
-        .then(res=> console.log(res))
+        .then(res=> console.log(res) )
         .catch(err=> console.log(err))
+        
+        alert(`Leed is Created.`);
 
     }
 
@@ -588,11 +594,12 @@ const CreateLeed = () => {
             <div className="form-control w-full max-w-xs">
               <select {...register("assignedPerson")} className="select w-full max-w-xs">
                <option disabled selected>Assigned Person</option>
-               <option>Homer</option>
-               <option>Marge</option>
-               <option>Bart</option>
-               <option>Lisa</option>
-               <option>Orton</option>
+              {
+                  employees?.map((user,index) =><option 
+                  key={index}
+                  value={user.email}
+                 >{user.email}</option>)
+              }
                </select>
         
               </div>

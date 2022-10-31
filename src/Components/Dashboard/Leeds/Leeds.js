@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import LeedDetails from './LeedDetails';
 import LeedsRow from './LeedsRow';
 
 const Leeds = () => {
@@ -28,8 +29,8 @@ const Leeds = () => {
     <thead>
       <tr>
         <th>SL NO.</th>
-        <th>Email</th>
         <th>Name</th>
+        <th>Email</th>
         <th>IELTS</th>
         <th>Interested Country</th>
         <th>Phone</th>
@@ -41,13 +42,15 @@ const Leeds = () => {
       
     {
         data?.map((item, index)=> (
-            
+         
+
             <LeedsRow 
             key={index}
             item={item}
             index={index}
             refetch={handleFetch}
             />
+            
         ))
       }
     </tbody>

@@ -71,7 +71,6 @@ const AddCountry = () => {
       <tr>
         <th>SL NO.</th>
         <th>Country</th>
-     
         <th>Action</th>
       </tr>
     </thead>

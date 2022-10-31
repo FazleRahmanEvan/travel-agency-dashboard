@@ -19,6 +19,7 @@ import AddWeightage from './Components/Dashboard/AddProperty/AddWeightage';
 import TodaysTask from './Components/Dashboard/TodaysTask/TodaysTask';
 import EmployeeDetails from './Components/Dashboard/EmployeeDetails/EmployeeDetails';
 import Attendence from './Components/Dashboard/Attendence';
+import LeedDetails from './Components/Dashboard/Leeds/LeedDetails';
 
 
 
@@ -36,12 +37,14 @@ function App() {
        
        <Route path="/dashboard" element={<RequireAuth><Dashboard/>
        </RequireAuth>}> 
+
        <Route path='leeds' index element={<Leeds></Leeds>}></Route>
         <Route path="createleeds" element={<CreateLeed ></CreateLeed>}></Route>
         <Route path="attendence" element={<Attendence></Attendence>}></Route>
+        <Route path='leeddetails'element={<LeedDetails></LeedDetails>}></Route>
+   
         {/* <Route path="todaysTask" element={<TodaysTask></TodaysTask>}></Route> */}
         <Route path="employeeList" element={<EmployeeDetails></EmployeeDetails>}></Route>
-       
         <Route path="addCountry" element={<AddCountry ></AddCountry>}></Route>
         <Route path="addCourselevel" element={<AddCourseLevel></AddCourseLevel>}></Route>
         <Route path="addLeadSource" element={<AddLeadSource></AddLeadSource>}></Route>
@@ -51,6 +54,7 @@ function App() {
         <Route path="addWeightage" element={<AddWeightage></AddWeightage>}></Route>
        </Route>
 
+       
         <Route path="/login" element={<Login/>} />
        <Route path="/signup" element={<SignUp/>} />
        

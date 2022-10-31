@@ -70,7 +70,6 @@ const AddStudenetType = () => {
    <tr>
      <th>SL NO.</th>
      <th>Student Type</th>
-  
      <th>Action</th>
    </tr>
  </thead>

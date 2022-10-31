@@ -6,7 +6,7 @@ const useCountry = () => {
 
     useEffect(()=>{
     setLoading(true);
-    fetch('http://localhost:5000/country')
+    fetch('http://localhost:5000/country',)
     .then(res=>res.json())
     .then(data=>setCountries(data))
     .catch(err=>console.log(err))

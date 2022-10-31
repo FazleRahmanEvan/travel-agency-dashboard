@@ -65,7 +65,6 @@ const AddUniversity = () => {
    <tr>
      <th>SL NO.</th>
      <th>University</th>
-     <th>Edit</th>
      <th>Delete</th>
    </tr>
  </thead>
