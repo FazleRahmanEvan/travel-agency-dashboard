@@ -23,7 +23,7 @@ const Login = () => {
 
         const navigate = useNavigate();
         const location = useLocation();
-        let from = location.state?.from?.pathname || "/dashboard";
+        let from = location.state?.from?.pathname || "/dashboard/leeds";
 
         useEffect( () =>{
 

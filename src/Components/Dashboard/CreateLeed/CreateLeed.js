@@ -308,7 +308,7 @@ const CreateLeed = () => {
             </div>
             <div  className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 '>
             <div className="form-control w-full max-w-xs">
-                    <select className="select w-full max-w-xs">
+                    <select {...register("previousQualificationLevel")} className="select w-full max-w-xs">
                      <option disabled selected>Previous Qualification Level</option>
                      <option>HSC</option>
                      <option> BA (Bachelor of Arts)</option>
@@ -329,7 +329,7 @@ const CreateLeed = () => {
                     </div>
 
                     <div className="form-control w-full max-w-xs">
-                    <select className="select w-full max-w-xs">
+                    <select {...register("recentQualificationLevel")} className="select w-full max-w-xs">
                      <option disabled selected>Recent Qualification Level</option>
                      <option>HSC</option>
                      <option> BA (Bachelor of Arts)</option>
@@ -418,7 +418,7 @@ const CreateLeed = () => {
             </div>
             <div  className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 '>
             <div className="form-control w-full max-w-xs">
-                    <select {...register("ieltsPoint")}  className="select w-full max-w-xs">
+                    <select {...register("ielts")}  className="select w-full max-w-xs">
                      <option disabled selected>IELTS</option>
                      <option>Yes</option>
                      <option>No</option>

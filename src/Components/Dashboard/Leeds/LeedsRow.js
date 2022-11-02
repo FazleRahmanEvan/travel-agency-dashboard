@@ -7,7 +7,7 @@ const leedsRow = ({index, item, refetch}) => {
  
     const{ _id}= item;
    
-    const handleDelete = id=>{
+    const handleDelete = id =>{
        
         fetch(`http://localhost:5000/leeds/${_id}`,{
             method:'DELETE',
@@ -26,7 +26,7 @@ const leedsRow = ({index, item, refetch}) => {
     return (
         <tr>
         <th>{index + 1}</th>
-        <td><Link class="link link-hover" to= {`/dashboard/leeddetails/${_id}`}>{item.firstname}</Link></td>
+        <td><Link class="link link-hover" to= {`/dashboard/leeds/${_id}`}>{item.firstname}</Link></td>
         <td>{item.email}</td>
         <td>{item.ieltsPoint}</td>
         <td>{item.countryname}</td>
@@ -39,3 +39,7 @@ const leedsRow = ({index, item, refetch}) => {
 };
 
 export default leedsRow;
+
+
+
+  

@@ -36,7 +36,7 @@ const Dashboard = () => {
                     </div>
               </div>
           
-            <li className='text-3xl text-white'><Link to ="/dashboard">Dream Solution</Link></li>
+            <li className='text-3xl text-white'><Link to ="/dashboard/leeds">Dream Solution</Link></li>
             
             <li className='text-white text-center'><Link to="/dashboard/leeds">Leeds</Link></li>
             <li className='text-white  text-center'><Link to="/dashboard/createleeds">Create Leed</Link></li>

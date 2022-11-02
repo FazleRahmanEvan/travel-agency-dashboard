@@ -36,7 +36,7 @@ const SignUp = () => {
       if (token) {
         // console.log(user || gUser);
             
-      navigate('/dashboard');
+      navigate('/dashboard/leeds');
      }
 
 

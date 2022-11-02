@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Search from '../../Shared/Search';
 import LeedDetails from './LeedDetails';
 import LeedsRow from './LeedsRow';
 
@@ -21,8 +22,14 @@ const Leeds = () => {
 
     return (
         <div>
-            <h1 className='text-3xl font-bold pl-4 mb-6 mt-5'>Leeds</h1>
+           <div className='flex justify-between mt-3 mb-4 p-2'>
+          <div>
+          <h1 className='text-3xl font-bold pl-4 mb-6 mt-5'>Leeds</h1>
             <p className='mt-6 pl-8'>Total Leeds: {data?.length}</p>
+          </div>
+          <Search></Search>
+           </div>
+           
             <div class="overflow-x-auto mt-4">
   <table class="table w-full">
    

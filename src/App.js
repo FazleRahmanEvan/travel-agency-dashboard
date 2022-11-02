@@ -41,7 +41,7 @@ function App() {
        <Route path='leeds' index element={<Leeds></Leeds>}></Route>
         <Route path="createleeds" element={<CreateLeed ></CreateLeed>}></Route>
         <Route path="attendence" element={<Attendence></Attendence>}></Route>
-        <Route path='leeddetails'element={<LeedDetails></LeedDetails>}></Route>
+        <Route path='leeds/:_id'element={<LeedDetails></LeedDetails>}></Route>
    
         {/* <Route path="todaysTask" element={<TodaysTask></TodaysTask>}></Route> */}
         <Route path="employeeList" element={<EmployeeDetails></EmployeeDetails>}></Route>
